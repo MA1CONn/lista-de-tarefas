@@ -85,11 +85,11 @@
       <button class="check" aria-label="Marcar como concluída">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       </button>
-      <span class="prio-dot" title="Prioridade ${priorityLabel(t.priority)}"></span>
       <div class="task-body">
         <div class="task-text" contenteditable="true" spellcheck="false">${escapeHtml(t.text)}</div>
-        <div class="task-meta">${priorityLabel(t.priority)} · ${t.dateLabel}</div>
+        <div class="task-meta">${t.dateLabel}</div>
       </div>
+      <span class="prio-badge">${priorityLabel(t.priority)}</span>
       <button class="del-btn" aria-label="Excluir tarefa">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M9 7V4h6v3m-8 0l1 13h8l1-13"/></svg>
       </button>

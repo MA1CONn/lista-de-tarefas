@@ -126,30 +126,53 @@
 
   .priority-select {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     padding: 2px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
   }
 
   .dot-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     border: 1.5px solid transparent;
+    border-radius: 16px;
     cursor: pointer;
-    display: grid;
-    place-items: center;
     background: transparent;
-    padding: 0;
+    padding: 5px 10px 5px 8px;
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
 
-  .dot-btn .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-btn .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
   .dot-btn[data-p="alta"] .dot { background: var(--danger); }
   .dot-btn[data-p="media"] .dot { background: var(--amber); }
   .dot-btn[data-p="baixa"] .dot { background: var(--sage); }
-  .dot-btn.active { border-color: currentColor; }
-  .dot-btn[data-p="alta"].active { color: var(--danger); }
-  .dot-btn[data-p="media"].active { color: var(--amber-deep); }
-  .dot-btn[data-p="baixa"].active { color: var(--sage); }
+
+  .dot-btn .dot-label {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .dot-btn:hover { background: var(--paper-dim); }
+
+  .dot-btn.active { background: var(--paper-dim); }
+  .dot-btn.active[data-p="alta"] { border-color: var(--danger); }
+  .dot-btn.active[data-p="media"] { border-color: var(--amber-deep); }
+  .dot-btn.active[data-p="baixa"] { border-color: var(--sage); }
+  .dot-btn.active .dot-label { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 480px) {
+    .dot-btn .dot-label { display: none; }
+    .dot-btn { padding: 6px; }
+  }
 
   #add-btn {
     border: none;
@@ -243,17 +266,22 @@
 
   .task.done .check svg { opacity: 1; transform: scale(1); }
 
-  .prio-dot {
+  .prio-badge {
     flex-shrink: 0;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    margin-top: 8px;
+    margin-top: 2px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
   }
 
-  .task[data-priority="alta"] .prio-dot { background: var(--danger); }
-  .task[data-priority="media"] .prio-dot { background: var(--amber); }
-  .task[data-priority="baixa"] .prio-dot { background: var(--sage); }
+  .task[data-priority="alta"] .prio-badge { background: rgba(181, 87, 63, 0.15); color: var(--danger); }
+  .task[data-priority="media"] .prio-badge { background: rgba(217, 164, 65, 0.22); color: var(--amber-deep); }
+  .task[data-priority="baixa"] .prio-badge { background: rgba(127, 154, 118, 0.18); color: #4f6a47; }
+
+  .task.done .prio-badge { opacity: 0.5; }
 
   .task-body { flex: 1; min-width: 0; }
 
